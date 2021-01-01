@@ -60,7 +60,13 @@ export const signin = (req: express.Request, res: express.Response) => {
         expiresIn: "1h"
     })
 
+    res.cookie("jwt", accessToken, {secure: true, httpOnly: true})
+    res.status(200).send()
+}
+
+
+export const testAuth = (req: express.Request, res: express.Response) => {
     res.status(200).json({
-        token: `Bearer ${accessToken}`
+        message: "the request is authenticated."
     })
 }

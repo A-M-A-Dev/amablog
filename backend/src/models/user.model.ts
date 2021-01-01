@@ -18,5 +18,13 @@ const UserScema = new mongoose.Schema({
     }
 })
 
+declare global {
+    namespace Express {
+        export interface Request {
+            user: IUser;
+        }
+    }
+}
+
 export const User = mongoose.model<IUser>('User', UserScema)
 

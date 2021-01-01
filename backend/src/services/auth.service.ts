@@ -1,12 +1,8 @@
 import express from "express"
 import jwt from "jsonwebtoken";
-import { User, IUser } from "../models/user.model"
+import { User } from "../models/user.model"
 
-export interface IGetUserAuthInfoRequest extends express.Request {
-    user: IUser
-}
-
-export const authorize = (req: IGetUserAuthInfoRequest, res: express.Response, next: express.NextFunction) => {
+export const authorize = (req: express.Request, res: express.Response, next: express.NextFunction) => {
     let accessToken = req.cookies.jwt
 
     if (!accessToken) {
