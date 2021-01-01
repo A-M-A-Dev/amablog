@@ -11,11 +11,3 @@ export const register = async (req: express.Request, res: express.Response) => {
 
     res.status(200)
 }
-
-export const getstring = async (req: express.Request, res: express.Response) => {
-    res.status(200).json({
-        message: "hello"
-    })
-}
-
-// export const login = async (req: express.Request, res)
