@@ -1,0 +1,17 @@
+version: "3"
+services:
+  backend:
+    container_name: amablog-backend
+    restart: always
+    build: backend
+    ports:
+      - 3000:80
+    volumes:
+      - .:/app
+    links:
+      - mongo
+  mongo:
+    container_name: amablog-mongo
+    image: mongo
+    ports:
+      - "27017:27017"
