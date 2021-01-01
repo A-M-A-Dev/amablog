@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 import express from "express";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser"
@@ -11,8 +9,12 @@ const port = 80;
 
 const app = express()
 app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
+app.use(cookieParser())
 
-app.use('/user', userRouter)
+app.use('/api', userRouter)
 
 app.all("*", (req: express.Request, res: express.Response) => {
     if (req.accepts('json')) {
