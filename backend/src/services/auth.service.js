@@ -1,8 +1,7 @@
-import express from "express"
 import jwt from "jsonwebtoken";
-import { User } from "../models/user.model"
+import { User } from "../models/user.model.js"
 
-export const authorize = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+export const authorize = (req, res, next) => {
     let accessToken = req.cookies.jwt
 
     if (!accessToken) {
@@ -11,7 +10,7 @@ export const authorize = (req: express.Request, res: express.Response, next: exp
         })
     }
 
-    jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET as string, (err: any, user: any) => {
+    jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) {
             return res.status(401).json({
                 message: "Invalid authorization token"

@@ -8,7 +8,4 @@ WORKDIR /app
 COPY . /app/
 RUN npm install
 
-RUN ls
-RUN pwd
-
 ENTRYPOINT [ "npm", "start" ]

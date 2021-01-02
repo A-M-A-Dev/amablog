@@ -1,10 +1,9 @@
-import express from "express"
 import jwt from "jsonwebtoken";
-import { User } from "../models/user.model"
+import { User } from "../models/user.model.js"
 
 const emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
-export const signup = async (req: express.Request, res: express.Response) => {
+export const signup = async (req, res) => {
     const { email, password } = req.body
     
     if (!email || !password) return res.status(400).json({
@@ -34,7 +33,7 @@ export const signup = async (req: express.Request, res: express.Response) => {
     })
 }
 
-export const signin = (req: express.Request, res: express.Response) => {
+export const signin = (req, res) => {
     const { email, password } = req.body
 
     if (!email || !password) return res.status(400).json({
@@ -56,7 +55,7 @@ export const signin = (req: express.Request, res: express.Response) => {
         })
     }
 
-    const accessToken = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET as string, {
+    const accessToken = jwt.sign({ email: email }, process.env.ACCESS_TOKEN_SECRET, {
         expiresIn: "1h"
     })
 
@@ -65,7 +64,7 @@ export const signin = (req: express.Request, res: express.Response) => {
 }
 
 
-export const testAuth = (req: express.Request, res: express.Response) => {
+export const testAuth = (req, res) => {
     res.status(200).json({
         message: "the request is authenticated."
     })

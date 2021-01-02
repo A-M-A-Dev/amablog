@@ -1,7 +1,6 @@
-import express from "express";
 import url from "url";
 
-export function fullUrl(req: express.Request) {
+export function fullUrl(req) {
     return url.format({
         protocol: req.protocol,
         host: req.get('host'),

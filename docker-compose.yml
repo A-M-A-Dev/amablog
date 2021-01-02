@@ -6,10 +6,10 @@ services:
     build: backend
     ports:
       - 3000:80
-    # links:
-    #   - mongo
-  # mongo:
-  #   container_name: amablog-mongo
-  #   image: mongo
-  #   ports:
-  #     - "27017:27017"
+    links:
+      - mongo
+  mongo:
+    container_name: amablog-mongo
+    image: mongo
+    ports:
+      - "27017:27017"
