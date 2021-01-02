@@ -4,8 +4,6 @@ services:
     container_name: amablog-backend
     restart: always
     build: backend
-    ports:
-      - 3000:80
     links:
       - mongo
     environment:
@@ -14,5 +12,3 @@ services:
   mongo:
     container_name: amablog-mongo
     image: mongo
-    ports:
-      - "27017:27017"
