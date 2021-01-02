@@ -61,9 +61,6 @@ export const signin = async (req, res) => {
         expiresIn: "1h"
     })
 
-    // res.cookie("jwt", accessToken, {secure: true, httpOnly: true})
-    // res.status(200).send()
-
     res.status(200).json({
         token: `Bearer ${accessToken}`
     })
@@ -72,6 +69,6 @@ export const signin = async (req, res) => {
 
 export const testAuth = (req, res) => {
     res.status(200).json({
-        message: "the request is authenticated."
+        message: `the request is authenticated for user ${req.user.email}.`
     })
 }
