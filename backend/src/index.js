@@ -1,11 +1,22 @@
 import express from "express"
 import bodyParser from "body-parser"
 import cookieParser from "cookie-parser"
+import mongoose from "mongoose"
 import { fullUrl } from "./utils.js"
 import userRouter from "./routers/user.router.js"
 
 const hostname = "0.0.0.0";
 const port = 80;
+
+mongoose
+  .connect(
+    `mongodb://mongo/${process.env.MONGO_DATABASE}`,
+    { 
+        useNewUrlParser: true,
+        useUnifiedTopology: true 
+    })
+  .then(() => console.log('MongoDB Connected'))
+  .catch(err => console.log(err));
 
 const app = express()
 app.use(bodyParser.json())

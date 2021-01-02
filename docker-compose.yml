@@ -8,6 +8,9 @@ services:
       - 3000:80
     links:
       - mongo
+    environment:
+      - MONGO_DATABASE=amablog
+      - ACCESS_TOKEN_SECRET
   mongo:
     container_name: amablog-mongo
     image: mongo

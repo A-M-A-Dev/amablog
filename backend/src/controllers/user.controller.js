@@ -10,7 +10,9 @@ export const signup = async (req, res) => {
             message: "request length should be 2."
         })
 
-    if (User.exists({ email: email })) res.status(409).json({
+    let users = await User.find({ email: email })
+
+    if (users.length) return res.status(409).json({
             message: "email already exists."
         })
     
@@ -18,22 +20,22 @@ export const signup = async (req, res) => {
             message: "field `email` is not valid."
         })
     
-    if (password.length <= 5) return res.status(400).json({
+    if (password.length < 5) return res.status(400).json({
             message: "field `password` length should be gt 5."
         })
 
-    const user = new User({
+    user = new User({
         email: email,
         password: password,
     })
     await user.save()
 
-    res.status(200).json({
+    res.status(201).json({
         message: "user has been created."
     })
 }
 
-export const signin = (req, res) => {
+export const signin = async (req, res) => {
     const { email, password } = req.body
 
     if (!email || !password) return res.status(400).json({
@@ -44,12 +46,12 @@ export const signin = (req, res) => {
         message: "field `email` is not valid."
     })
 
-    let user = User.find({
+    let users = await User.find({
         email: email,
         password: password
     })
 
-    if (!user) {
+    if (!users.length) {
         return res.status(401).json({
             message: "wrong email or password"
         })
@@ -59,8 +61,12 @@ export const signin = (req, res) => {
         expiresIn: "1h"
     })
 
-    res.cookie("jwt", accessToken, {secure: true, httpOnly: true})
-    res.status(200).send()
+    // res.cookie("jwt", accessToken, {secure: true, httpOnly: true})
+    // res.status(200).send()
+
+    res.status(200).json({
+        token: `Bearer ${accessToken}`
+    })
 }
 
 
