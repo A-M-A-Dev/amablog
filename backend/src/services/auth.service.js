@@ -2,13 +2,15 @@ import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js"
 
 export const authorize = (req, res, next) => {
-    let accessToken = req.headers.authorization.split(' ')[1]
+    let authHeader = req.headers.authorization
 
-    if (!accessToken) {
+    if (!authHeader) {
         return res.status(403).json({
             message: "No authorization token provided"
         })
     }
+
+    let accessToken = authHeader.split(' ')[1]
 
     jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, async (err, user) => {
         if (err) {
