@@ -1,7 +1,7 @@
 import express from "express"
 import { signup, signin, testAuth } from "../controllers/user.controller.js"
-import { authorize } from "../services/auth.service.js"
 import { generateMethodNotAllowed } from "../controllers/default.controller.js"
+import { authorize } from "../middlewares/auth.js"
 
 const router = express.Router()
 
