@@ -6,7 +6,7 @@ import userRouter from "./routers/user.router.js"
 import { notFound } from "./controllers/default.controller.js"
 
 const hostname = "0.0.0.0";
-const port = 80;
+const port = 3000;
 
 mongoose
   .connect(

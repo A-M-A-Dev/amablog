@@ -12,4 +12,4 @@ COPY . /app/
 
 ENV NODE_ENV production
 
-ENTRYPOINT [ "npm", "run", "start:prod" ]
+ENTRYPOINT [ "npm", "run", "start" ]
