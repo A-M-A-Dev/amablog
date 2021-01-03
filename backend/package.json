@@ -18,8 +18,7 @@
     "nodemon": "^2.0.6"
   },
   "scripts": {
-    "build": "tsc",
-    "test": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "start": "nodemon src/index.js",
+    "start:prod": "node src/index.js"
   }
 }
