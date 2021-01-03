@@ -7,7 +7,8 @@ services:
     links:
       - mongo
     volumes: 
-      - ./backend/src:/app/src
+      - ./backend:/app
+      - /app/node_modules
     environment:
       - MONGO_DATABASE=amablog
       - ACCESS_TOKEN_SECRET
