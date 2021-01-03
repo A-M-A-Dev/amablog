@@ -1,0 +1,279 @@
+* {
+    font-family: Samim;
+    direction: rtl;
+}
+:root {
+    --blue-color: #3699FF;
+    --gray-color: #3F4254;
+    --gray-light-color: #a2a3b7;
+    --gray-lighter-color: #dedff6;
+    --dark-blue-color: #1a1a27;
+}
+body {
+    background: #EEEEEE;
+}
+/***************** Top Nav *****************/
+#top-nav {
+    background: white;
+    height: 75px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    box-shadow: 0 -2px 15px 0 #929292;
+    z-index: 99;
+}
+body.night-mode #top-nav {
+    background: var(--dark-blue-color);
+    box-shadow: 0 2px 15px 0 var(--dark-blue-color);
+}
+/* Logo */
+.logo-container {
+    height: 90%;
+    width: 280px;
+    text-align: center;
+}
+.logo-container img {
+    height: 100%;
+}
+.logo-container img#night-logo {
+    display: none;
+}
+body.night-mode .logo-container img#day-logo {
+    display: none;
+}
+body.night-mode .logo-container img#night-logo {
+    display: inline-block;
+}
+/* Sub Menu */
+#sub-menu {
+    width: calc(100% - 280px);
+}
+.login-btn i {
+    vertical-align: middle;
+}
+#pills-tab a {
+    transition-duration: 0.1s;
+}
+#pills-tab a:not(.active):hover {
+    color: var(--dark-blue-color);
+}
+body.night-mode #pills-tab a {
+    color: var(--blue-color);
+}
+body.night-mode #pills-tab a:hover {
+    color: white;
+}
+body.night-mode #pills-tab a.active {
+    color: white;
+}
+.btn-outline-custom {
+    color: var(--blue-color);
+    border-color: var(--blue-color);
+}
+.btn-outline-custom:hover {
+    color: #fff;
+    background-color: var(--blue-color);
+    border-color: var(--blue-color);
+}
+body.night-mode .btn-outline-custom {
+    color: #fff;
+    border-color: #fff;
+}
+body.night-mode .btn-outline-custom:hover {
+    color: var(--dark-blue-color);
+    background-color: #fff;
+    border-color: #fff;
+}
+#toggle-menu-btn {
+    cursor: pointer;
+    display: none;
+}
+body.night-mode #toggle-menu-btn {
+    color: white;
+}
+
+/***************** Bottom Nav *****************/
+#bottom-nav {
+    background: white;
+    height: 75px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 99;
+    box-shadow: 0 -2px 15px 0 #929292;
+    display: none;
+}
+/************* Sidebar *************/
+#sidebar {
+    width: 300px;
+    height: calc(100% - 75px);
+    background: #ffffff;
+    color: var(--gray-color);
+    position: fixed;
+    right: 0;
+    top: 75px;
+    z-index: 999;
+    transition: left 0.5s;
+}
+body.night-mode #sidebar {
+    background: var(--dark-blue-color);
+    color: var(--gray-light-color);
+}
+#sidebar h4 {
+    text-align: center;
+    margin: 25px 0;
+    font-weight: bold;
+}
+#sidebar hr {
+    background: var(--gray-lighter-color);
+    width: 75%;
+    margin: 30px auto;
+}
+body.night-mode #sidebar hr {
+    background: var(--gray-color);
+}
+#night-mode-setting .night-mode-icon {
+    font-size: 20px;
+}
+/************* Main Container *************/
+#main-container {
+    background: #EEEEEE;
+    width: calc(100% - 300px);
+    margin: 75px 300px 0 0;
+    overflow: hidden;
+}
+/************* Main Page *************/
+.grid-container {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    padding: 25px;
+}
+.grid-item {
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.grid-item .image-container {
+    background: #d9d9d9;
+    color: var(--gray-color);
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+.image-container:hover {
+    box-shadow: 0 2px 8px 1px #ababab
+}
+.image-container i {
+    font-size: 5em;
+}
+/************ Modal ************/
+#modal {
+    background: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999;
+    transform: scale(0);
+    transition-duration: 0.25s;
+}
+#modal.active-modal {
+    transform: scale(1);
+}
+/************ Responsive ************/
+@media only screen and (max-width: 1000px) {
+    .grid-container {
+        grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+    .grid-item {
+        height: 150px;
+    }
+    .image-container i {
+        font-size: 3.5em;
+    }
+}
+@media only screen and (max-width: 750px) { /* For Bug Fix */
+    .grid-item {
+        height: 100px;
+    }
+    .image-container i {
+        font-size: 2.3em;
+    }
+    .login-btn span {
+        display: none;
+    }
+}
+@media only screen and (max-width: 610px) { /* For Bug Fix */
+    #sub-menu ul a.nav-link span {
+        display: none;
+    }
+}
+@media only screen and (max-width: 600px) {
+    /** Submenu and Navs **/
+    #sub-menu ul a.nav-link span {
+        display: inline-block;
+    }
+    #sub-menu {
+        justify-content: center !important;
+        width: 100%;
+        height: 75px;
+        background: white;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        box-shadow: 0 -2px 15px 0 #929292;
+        z-index: 99;
+    }
+    body.night-mode #sub-menu {
+        background: var(--dark-blue-color);
+        box-shadow: 0 -2px 15px 0 var(--dark-blue-color);
+    }
+    #sub-menu .login-btn {
+        margin-right: 0 !important;
+    }
+    #toggle-menu-btn {
+        display: block;
+    }
+    .logo-container {
+        width: auto;
+    }
+    .login-btn span {
+        display: inline-block;
+    }
+    /** Sidebar **/
+    #sidebar {
+        height: calc(100% - 150px);
+        overflow: hidden;
+        right: unset;
+        left: -100%;
+    }
+    .open-sidebar {
+        left: 0 !important;
+    }
+    /** Main Container **/
+    #main-container {
+        width: 100%;
+        margin-right: 0;
+    }
+    /** Main Page **/
+    #pills-home {
+        margin-bottom: 100px;
+    }
+    .grid-container {
+        grid-template-columns: 100%;
+    }
+    .grid-item {
+        height: 250px;
+    }
+    .image-container i {
+        font-size: 3.5em;
+    }
+}

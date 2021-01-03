@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AMA Dev</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon-blue.png"/>
+
+    <!-- Fonts -->
+    <link href='https://cdn.fontcdn.ir/Font/Persian/Samim/Samim.css' rel='stylesheet' type='text/css'>
+
+    <!-- FontAwesome   -->
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- IOS Switch Button -->
+    <link rel="stylesheet" href="css/ios-switch-button.css">
+
+    <link rel="stylesheet" href="css/main.css">
+
+    <link rel="stylesheet" href="css/table&card.css">
+
+    <link rel="stylesheet" href="css/login-register.css">
+
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+</head>
+<body>
+<nav id="top-nav" class="d-flex align-items-center navbar">
+    <div class="logo-container">
+        <img src="images/logo-black.png" alt="Logo" id="day-logo">
+        <img src="images/logo-blue.png" alt="Logo" id="night-logo">
+    </div>
+    <div id="sub-menu" class="d-flex align-items-center">
+        <ul class="p-2 nav nav-pills" id="pills-tab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-toggle="tab" href="#pills-home" role="tab" aria-controls="nav-home-tab" aria-selected="true"><i class="fal fa-home"></i> <span>خانه</span></a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" data-toggle="tab" href="#pills-data" role="tab" aria-controls="nav-data-tab" aria-selected="false"><i class="fal fa-table"></i> <span>داده ها</span></a>
+            </li>
+        </ul>
+        <button class="mr-auto p-2 btn btn-outline-custom login-btn ml-2" onclick="openModal('login')"><span>ورود</span> <i class="fal fa-sign-in"></i></button>
+        <button class="p-2 btn btn-outline-custom login-btn" onclick="openModal('register')"><span>ثبت نام</span> <i class="fal fa-user-plus"></i></button>
+    </div>
+    <i class="fal fa-bars fa-2x toggle-menu-bars" id="toggle-menu-btn" data-status=""></i>
+</nav>
+
+<aside id="sidebar">
+    <h4><i class="fal fa-users"></i> اعضای گروه </h4>
+    <ul class="contributors p-0 text-center list-unstyled">
+        <li><i class="fal fa-user"></i> مبینا پورنعمت</li>
+        <li><i class="fal fa-user"></i> احمد سلیمی</li>
+        <li><i class="fal fa-user"></i> آرمان زارعی</li>
+    </ul>
+    <hr>
+    <h4><i class="fal fa-cogs"></i> تنظیمات</h4>
+    <div class="d-flex justify-content-center" id="night-mode-setting">
+        <div class="ml-4 d-flex align-items-center">
+            <i class="fal fa-moon night-mode-icon ml-2"></i>
+            <span>حالت شب</span>
+        </div>
+        <div class="switch" id="switch-wrap-1">
+            <input type="checkbox"  id="switch-1"/>
+            <label class="toggle" for="switch-1"></label>
+        </div>
+    </div>
+</aside>
+<div id="main-container" class="tab-content">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+        <div class="grid-container">
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+            <div class="grid-item"><div class="image-container"><i class="fal fa-image"></i></div></div>
+        </div>
+    </div>
+    <div class="tab-pane fade table-div data-tab" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab">
+        <table class="table table-bordered table-striped table-hover data-tbl">
+            <tr>
+              <th>رتبه</th>
+              <th>نام تیم</th>
+              <th>نام دانشگاه و کشور</th>
+              <th>امتیاز</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>کوشا جان</td>
+                <td>دانشگاه صنعتی شریف، ایران</td>
+                <td>1305</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>مبارزین تنها</td>
+                <td>دانشگاه امیرکبیر، ایران</td>
+                <td>1270</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>حاجی درچه ای</td>
+                <td>دانشگاه علوم پزشکی اصفهان، ایران</td>
+                <td>1250</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>عدالت و آزادی</td>
+                <td>دانشگاه آزاد قزوین، ایران</td>
+                <td>1105</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Beatles</td>
+                <td>دانشگاه ملی شوچنکو، اوکراین</td>
+                <td>940</td>
+            </tr>
+            <tr>
+                <td>6</td>
+                <td>الگل</td>
+                <td>دانشگاه آزاد اسلامی واحد علوم تحقیقات، ایران</td>
+                <td>925</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>عمال مناجم البیانات</td>
+                <td>دانشگاه علم و صنعت اردن، اردن</td>
+                <td>870</td>
+            </tr>
+        </table>
+        <div class="allCards">
+            <div class="card bg-light mb-3 crd">
+                <div class="flex-cards-container"> 
+                    <div class="right-direction">رتبه</div> 
+                    <div class="right-direction"><b>نام تیم</b></div> 
+                    <div class="right-direction">نام دانشگاه و کشور</div>  
+                    <div class="right-direction"><b>امتیاز</b></div> 
+                    <div class="left-direction">1</div> 
+                    <div class="left-direction"><b>کوشا جان</b></div> 
+                    <div class="left-direction">دانشگاه صنعتی شریف، ایران</div>  
+                    <div class="left-direction"><b>1305</b></div>  
+                </div> 
+            </div>
+            <div class="card bg-light mb-3 crd">
+                <div class="flex-cards-container"> 
+                    <div class="right-direction">رتبه</div> 
+                    <div class="right-direction"><b>نام تیم</b></div> 
+                    <div class="right-direction">نام دانشگاه و کشور</div>  
+                    <div class="right-direction"><b>امتیاز</b></div> 
+                    <div class="left-direction">2</div> 
+                    <div class="left-direction"><b>مبارزین تنها</b></div> 
+                    <div class="left-direction">دانشگاه امیرکبیر، ایران</div>  
+                    <div class="left-direction"><b>1270</b></div>  
+                </div> 
+            </div>
+            <div class="card bg-light mb-3 crd">
+                <div class="flex-cards-container"> 
+                    <div class="right-direction">رتبه</div> 
+                    <div class="right-direction"><b>نام تیم</b></div> 
+                    <div class="right-direction">نام دانشگاه و کشور</div>  
+                    <div class="right-direction"><b>امتیاز</b></div> 
+                    <div class="left-direction">3</div> 
+                    <div class="left-direction"><b>حاجی درچه ای</b></div> 
+                    <div class="left-direction">دانشگاه علوم پزشکی اصفهان، ایران</div>  
+                    <div class="left-direction"><b>1250</b></div> 
+                </div> 
+            </div>
+            <div class="card bg-light mb-3 crd">
+                <div class="flex-cards-container"> 
+                    <div class="right-direction">رتبه</div> 
+                    <div class="right-direction"><b>نام تیم</b></div> 
+                    <div class="right-direction">نام دانشگاه و کشور</div>  
+                    <div class="right-direction"><b>امتیاز</b></div> 
+                    <div class="left-direction">4</div> 
+                    <div class="left-direction"><b>عدالت و آزادی</b></div> 
+                    <div class="left-direction">دانشگاه آزاد قزوین، ایران</div>  
+                    <div class="left-direction"><b>1105</b></div> 
+                </div> 
+            </div>
+            <div class="card bg-light mb-3 crd">
+                <div class="flex-cards-container"> 
+                    <div class="right-direction">رتبه</div> 
+                    <div class="right-direction"><b>نام تیم</b></div> 
+                    <div class="right-direction">نام دانشگاه و کشور</div>  
+                    <div class="right-direction"><b>امتیاز</b></div> 
+                    <div class="left-direction">5</div> 
+                    <div class="left-direction"><b>Beatles</b></div> 
+                    <div class="left-direction">دانشگاه ملی شوچنکو، اوکراین</div>  
+                    <div class="left-direction"><b>940</b></div> 
+                </div> 
+            </div>
+            <div class="card bg-light mb-3 crd">
+                <div class="flex-cards-container"> 
+                    <div class="right-direction">رتبه</div> 
+                    <div class="right-direction"><b>نام تیم</b></div> 
+                    <div class="right-direction">نام دانشگاه و کشور</div>  
+                    <div class="right-direction"><b>امتیاز</b></div> 
+                    <div class="left-direction">6</div> 
+                    <div class="left-direction"><b>الگل</b></div> 
+                    <div class="left-direction">دانشگاه آزاد اسلامی واحد علوم تحقیقات، ایران</div>  
+                    <div class="left-direction"><b>925</b></div> 
+                </div> 
+            </div>
+            <div class="card bg-light mb-3 crd">
+                <div class="flex-cards-container"> 
+                    <div class="right-direction">رتبه</div> 
+                    <div class="right-direction"><b>نام تیم</b></div> 
+                    <div class="right-direction">نام دانشگاه و کشور</div>  
+                    <div class="right-direction"><b>امتیاز</b></div> 
+                    <div class="left-direction">7</div> 
+                    <div class="left-direction"><b>عمال مناجم البیانات</b></div> 
+                    <div class="left-direction">دانشگاه علم و صنعت اردن، اردن</div>  
+                    <div class="left-direction"><b>870</b></div> 
+                </div> 
+            </div>
+        </div>
+        <div id="data-buttons-container">
+            <div class="bd-highlight prev-flex">قبلی</div>
+            <div class="bd-highlight next-flex">بعدی</div>
+        </div>
+    </div>
+</div>
+<div id="modal">
+    <div class="login-parent" style="height: 100vh;">
+
+        <nav id="login-nav" class="d-flex align-items-center navbar login-container">
+            <div class="login-logo-container r-2">
+                <img src="images/logo-black.png" alt="Logo" id="day-logo">
+                <img src="images/logo-blue.png" alt="Logo" id="night-logo">
+            </div>
+            <div class="d-flex align-items-center">
+    
+                <button onclick="closeModal()" id="go-home" class="mr-auto p-2 ml-2 text-decoration-none btn"><span>بازگشت به خانه</span> <i
+                        class="fal fa-angle-double-left"></i></button>
+            </div>
+        </nav>
+    
+        <div id="login-box" class="row login-container">
+            <div class="col login-box">
+                <div class="row tab-header">
+                    <div class="col-6 p-0">
+                        <button id="register-tab-btn" class="text-center h-100 w-100 m-0 btn btn-primary border-0 rounded-0" disabled><b>ثبت‌نام</b></button>
+                    </div>
+                    <div class="col-6 p-0">
+                        <button id="login-tab-btn" class="text-center h-100 w-100 m-0 btn btn-primary rounded-0"><b>ورود</b></button>
+                    </div>
+                </div>
+                <div id="register-tab" class="row form-tab">
+                    <div class="m-auto">
+                        <input id="register-email-input" type="email" class="form-control my-2 logreg-input login-form-item" placeholder="ایمیل">
+                        <input id="register-password-input" type="password" class="form-control my-2 logreg-input login-form-item" placeholder="رمز عبور">
+                        <input id="register-repeat-password-input" type="password" class="form-control my-2 logreg-input login-form-item" placeholder="تکرار رمز عبور">
+                        <div class="form-check my-2">
+                            <div class="float-right">
+                                <input id="register-accept-rules" class="form-check-input float-right" type="checkbox" value="" id="acceptRules">
+                            </div>
+                            <label class="form-check-label mr-4 float-right accept-rules-label" for="acceptRules">
+                                <small>
+                                    قوانین و شرایط را می‌پذیرم
+                                </small>
+                            </label>
+                        </div>
+                        <button onclick="register()" type="button" class="btn btn-primary my-2 p-2 login-form-item">ثبت‌نام</button>
+                    </div>
+                </div>
+    
+                <div id="login-tab" class="row form-tab" style="display: none;">
+                    <div class="m-auto">
+                        <input id="login-email-input" type="email" class="form-control my-2 logreg-input login-form-item" placeholder="ایمیل">
+                        <input id="login-password-input" type="password" class="form-control my-2 logreg-input login-form-item" placeholder="رمز عبور">
+                        <button onclick="login()" type="button" class="btn btn-primary my-2 p-2 login-form-item">ورود</button>
+                    </div>
+                </div>
+
+                <div id="alert-zone" class="row tab-footer px-2">
+                </div>
+            </div>
+            <div id="login-image" class="col p-0">
+                <div class="p-relative text-center">
+                    <div id="register-text" class="image-text h4">عبارتی کوتاه و دلخواه که کاربر را به ثبت‌نام تشویق کند.</div>
+                    <div id="login-text" class="image-text h4" style="display: none;">عبارتی کوتاه و دلخواه که کاربر را به ورود تشویق کند.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Loading JS -->
+<script src="js/bootstrap.min.js"></script>
+<script src="js/ios-switch-button.js"></script>
+<script src="js/login-register-tab-toggle.js"></script>
+<script src="js/main.js"></script>
+<script src="js/login-register-tab-toggle.js"></script>
+</body>
+</html>

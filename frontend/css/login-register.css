@@ -1,0 +1,140 @@
+
+/***************** Login-Register *****************/
+#login-nav {
+    background: transparent;
+    height: 75px;
+    top: 40px;
+}
+
+.login-container {
+    max-width: 1000px;
+    margin: auto;
+}
+
+#login-box {
+    position: relative;
+    top: 20vh;
+}
+
+.login-logo-container {
+    height: 90%;
+    text-align: center;
+}
+
+.login-logo-container img {
+    height: 100%;
+}
+.login-logo-container img {
+    height: 100%;
+}
+.login-logo-container img#night-logo {
+    display: none;
+}
+body.night-mode .login-logo-container img#day-logo {
+    display: none;
+}
+body.night-mode .login-logo-container img#night-logo {
+    display: inline-block;
+}
+
+#go-home {
+    color: black;
+}
+
+body.night-mode #go-home {
+    color: white;
+}
+
+.login-box {
+    height: 400px;
+    background-color: white;
+    min-width: 350px;
+    max-width: 400px;
+}
+
+.login-form-item {
+    width: 300px;
+}
+
+.tab-header {
+    height: 15%;
+}
+
+.form-tab {
+    height: 70%;
+}
+
+.tab-footer {
+    height: 15%;
+}
+
+.login-parent {
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: #f3f3f3;
+}
+
+body.night-mode .login-parent {
+    padding-left: 10%;
+    padding-right: 10%;
+    background-color: var(--dark-blue-color);
+}
+
+.image-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.logreg-input {
+    padding: 1.5rem !important;
+}
+
+#login-image {
+    background-image: url("../images/signup-highQ-light.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+body.night-mode #login-image {
+    background-image: url("../images/signup-highQ-dark.jpg");
+    background-size: cover;
+    background-position: center;
+    box-shadow: -22px 0px 92px -21px #595959;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+    #login-image {
+        background-image: url("../images/signup-lowQ-light.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+    
+    body.night-mode #login-image {
+        background-image: url("../images/signup-lowQ-dark.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+body.night-mode .image-text {
+    color: whitesmoke;
+    text-shadow: 1px 1px black;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 600px) {
+    #login-image {
+        display: none;
+    }
+
+    .login-box {
+        max-width: 100%;
+    }
+}
