@@ -1,20 +1,20 @@
 import express from "express"
 import { signup, signin, testAuth } from "../controllers/user.controller.js"
 import { authorize } from "../services/auth.service.js"
-import { generateMethodNOtAllowed } from "../controllers/default.controller.js"
+import { generateMethodNotAllowed } from "../controllers/default.controller.js"
 
 const router = express.Router()
 
 router.route('/signup')
     .post(signup)
-    .all(generateMethodNOtAllowed('POST'))
+    .all(generateMethodNotAllowed('POST'))
 
 router.route('/signin')
     .post(signin)
-    .all(generateMethodNOtAllowed('POST'))
+    .all(generateMethodNotAllowed('POST'))
 
 router.route('/test_auth')
     .get(authorize, testAuth)
-    .all(generateMethodNOtAllowed('GET'))
+    .all(generateMethodNotAllowed('GET'))
 
 export default router

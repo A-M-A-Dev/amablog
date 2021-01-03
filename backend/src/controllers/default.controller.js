@@ -6,7 +6,7 @@ export const notFound = (req, res) => {
     })
 }
 
-export const generateMethodNOtAllowed = (allowedMethod) => {
+export const generateMethodNotAllowed = (allowedMethod) => {
     return (_, res) => {
         res.status(405).json({
             message: `Only \`${allowedMethod}\` Method is Valid.`
