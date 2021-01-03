@@ -87,7 +87,7 @@ login = () => {
 
 registerDone = (response) => {
     $('#login-tab-btn').click()
-    showLoginAlert(response.responseJSON.message, 'success')
+    showLoginAlert(response.message, 'success')
 }
 
 register = () => {
