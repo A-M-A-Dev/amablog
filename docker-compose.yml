@@ -6,6 +6,8 @@ services:
     build: backend
     links:
       - mongo
+    volumes: 
+      - ./backend:/app
     environment:
       - MONGO_DATABASE=amablog
       - ACCESS_TOKEN_SECRET
