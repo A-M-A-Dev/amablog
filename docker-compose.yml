@@ -12,7 +12,10 @@ services:
   mongo:
     container_name: amablog-mongo
     image: mongo
+    volumes:
+      - ./db-data:/data/db
   nginx:
+    container_name: amablog-nginx
     image: nginx:1.19.4-alpine
     ports:
       - 80:80
