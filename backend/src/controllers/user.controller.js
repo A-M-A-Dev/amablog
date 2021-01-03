@@ -24,7 +24,7 @@ export const signup = async (req, res) => {
             message: "field `password` length should be gt 5."
         })
 
-    user = new User({
+    const user = new User({
         email: email,
         password: password,
     })

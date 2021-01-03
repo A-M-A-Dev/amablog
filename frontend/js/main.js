@@ -27,11 +27,12 @@ function openModal(state) {
 }
 function closeModal(state) {
     document.getElementById('modal').classList.remove('active-modal');
+    $('#dismiss-alert').click()
 }
 
-showLoginAlert = message => {
+showLoginAlert = (message, style='danger') => {
     $('#alert-zone').html(`
-        <div id="login-alert" class="alert alert-danger alert-dismissible fade show mx-auto" style="display:none;" role="alert">
+        <div id="login-alert" class="alert alert-${style} alert-dismissible fade show mx-auto" style="display:none;" role="alert">
             <button id="dismiss-alert" type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -40,6 +41,13 @@ showLoginAlert = message => {
     `);
 
     $('#login-alert').slideDown("fast");
+}
+
+loginDone = (email, response) => {
+    window.localStorage.setItem('Login Email', email);
+    window.localStorage.setItem('Bearer Token', response.token);
+    showLoginAlert('Login successful', 'success')
+    // TODO: redirect to dashboard
 }
 
 login = () => {
@@ -64,7 +72,22 @@ login = () => {
 
     $('#dismiss-alert').click();
 
-    // TODO: send login request!
+    $.ajax({
+        method: 'POST',
+        url: '/api/signin/',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+        .done(response => loginDone(email, response))
+        .fail(response => {showLoginAlert(response.responseJSON.message)})
+}
+
+registerDone = (response) => {
+    $('#login-tab-btn').click()
+    showLoginAlert(response.responseJSON.message, 'success')
 }
 
 register = () => {
@@ -101,5 +124,15 @@ register = () => {
 
     $('#dismiss-alert').click();
 
-    // TODO: send register request!
+    $.ajax({
+        method: 'POST',
+        url: '/api/signup/',
+        contentType: 'application/json',
+        data: JSON.stringify({
+            email: email,
+            password: password
+        })
+    })
+        .done(response => registerDone(response))
+        .fail(response => showLoginAlert(response.responseJSON.message))
 }
