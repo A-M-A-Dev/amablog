@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js"
+import { Post } from "../models/post.model.js"
 
 export const authorize = (req, res, next) => {
     let authHeader = req.headers.authorization
@@ -24,4 +25,27 @@ export const authorize = (req, res, next) => {
         req.user = users[0]
         next()
     })
+}
+
+export const postPrivilege = (req, res, next) => {
+    const postId = req.params.id
+
+    Post.findById(postId)
+        .populate("user")
+        .then(data => {
+            if (!data)
+                return res.status(404).json({ message: `Not found Post with id = ${postId}`});
+            if (!data.user.id == req.user.id) {
+                return res.status(403).json({
+                    message: "You can't access someone else's post",
+                })
+            }
+             next()
+            
+        })
+        .catch(err => {
+            res.status(500).send({
+                message: `Error retrieving Post with id = ${postId}`
+            });
+        });
 }
