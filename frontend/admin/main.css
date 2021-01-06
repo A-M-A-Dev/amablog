@@ -21,23 +21,19 @@
 }
 
 .remove-post-container {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translate(-100%, -50%);
-    background: #e74c3c;
-    color: white;
-    padding: 5px 12px;
-    border-top-right-radius: 7px;
-    border-bottom-right-radius: 7px;
+    color: #e74c3c;
     cursor: pointer;
-    transition-duration: 0.3s;
 }
 
 .remove-post-container:hover {
-    box-shadow: 1px 1px 4px 0px black;
+    color: #c0392b
 }
 
-.post-container:hover .remove-post-container {
-    transform: translate(0, -50%);
+.edit-post-container {
+    color: #34495e;
+    cursor: pointer;
+}
+
+.edit-post-container:hover {
+    color: #2c3e50
 }
