@@ -1,0 +1,43 @@
+* {
+    font-family: Samim;
+    direction: rtl;
+    text-align: right;
+}
+
+/* Posts */
+.card-header i {
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+.post-created-at{
+    margin-left: 5px;
+    margin-top: 4px;
+}
+
+.post-container {
+    overflow: hidden;
+}
+
+.remove-post-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-100%, -50%);
+    background: #e74c3c;
+    color: white;
+    padding: 5px 12px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.remove-post-container:hover {
+    box-shadow: 1px 1px 4px 0px black;
+}
+
+.post-container:hover .remove-post-container {
+    transform: translate(0, -50%);
+}
