@@ -33,17 +33,19 @@ export const index = async (req, res) => {
 }
 
 export const create = async (req, res) => {
-    let { content } = req.body;
+    let { content, title } = req.body;
     content = content ? content.trim() : null;
+    title = title ? title.trim() : null;
 
-    if (!content) {
+    if (!content || !title) {
         res.status(400).send({
-            message: "You have to send content parameter"
+            message: "You have to send both content and title parameters"
         });
     }
 
     const post = new Post({
         content: content,
+        title: title,
         user: req.user,
     });
 
@@ -78,15 +80,16 @@ export const show = async (req, res) => {
 export const update = async (req, res) => {
     let { content } = req.body;
     content = content ? content.trim() : null;
+    title = title ? title.trim() : null;
 
-    if (!content) {
+    if (!content || !title) {
         res.status(400).send({
-            message: "You have to send content parameter"
+            message: "You have to send both content and title parameters"
         });
     }
 
     const postId = req.params.id;
-    Post.findByIdAndUpdate(postId, {content: content}, { new: true })
+    Post.findByIdAndUpdate(postId, {content: content, title: title}, { new: true })
         .populate("user")
         .then(post => {
             if (!post) {

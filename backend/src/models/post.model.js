@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 const PostSchema = new mongoose.Schema(
     {
         content: String,
+        title: String,
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User'
