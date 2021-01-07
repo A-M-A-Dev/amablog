@@ -1,3 +1,26 @@
+showLoggedInButtons = () => {
+    $('#login-btn').hide()
+    $('#register-btn').hide()
+    $('#logout-btn').show()
+    $('#admin-btn').show()
+    $('#user-info').html(`
+    <hr>
+    <h4><i class="fal fa-user"></i> خوش آمدید
+    ${window.localStorage.email}
+    </h4>
+    `)
+}
+
+showLoggedOutButtons = () => {
+    $('#login-btn').show()
+    $('#register-btn').show()
+    $('#logout-btn').hide()
+    $('#admin-btn').hide()
+    $('#user-info').html('')
+}
+
+// getUserInfo
+
 jQuery(document).ready(function ($) {
     const $sidebar = $("#sidebar");
     const $menuToggleBtn = $("#toggle-menu-btn");
@@ -18,6 +41,12 @@ jQuery(document).ready(function ($) {
     }).on('menu:close', function () {
         $sidebar.removeClass('open-sidebar');
     });
+
+    if (window.localStorage.token === undefined) {
+        showLoggedOutButtons()
+    } else {
+        showLoggedInButtons()
+    }
 });
 
 // Modal
@@ -25,7 +54,7 @@ function openModal(state) {
     $(`#${state}-tab-btn`).click()
     document.getElementById('modal').classList.add('active-modal');
 }
-function closeModal(state) {
+function closeModal() {
     document.getElementById('modal').classList.remove('active-modal');
     $('#dismiss-alert').click()
 }
@@ -43,11 +72,22 @@ showLoginAlert = (message, style='danger') => {
     $('#login-alert').slideDown("fast");
 }
 
+openAdmin = () => {
+    window.location.href = '/admin/'
+}
+
+logout = () => {
+    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('email')
+    showLoggedOutButtons()
+}
+
 loginDone = (email, response) => {
-    window.localStorage.setItem('Login Email', email);
-    window.localStorage.setItem('Bearer Token', response.token);
+    window.localStorage.token = response.token
+    window.localStorage.email = email
     showLoginAlert('Login successful', 'success')
-    // TODO: redirect to dashboard
+    showLoggedInButtons()
+    closeModal()
 }
 
 login = () => {
