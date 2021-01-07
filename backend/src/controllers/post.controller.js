@@ -38,7 +38,7 @@ export const create = async (req, res) => {
     title = title ? title.trim() : null;
 
     if (!content || !title) {
-        res.status(400).send({
+        return res.status(400).json({
             message: "You have to send both content and title parameters"
         });
     }
@@ -78,12 +78,12 @@ export const show = async (req, res) => {
 }
 
 export const update = async (req, res) => {
-    let { content } = req.body;
+    let { content, title } = req.body;
     content = content ? content.trim() : null;
     title = title ? title.trim() : null;
 
     if (!content || !title) {
-        res.status(400).send({
+        return res.status(400).json({
             message: "You have to send both content and title parameters"
         });
     }

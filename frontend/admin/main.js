@@ -1,6 +1,8 @@
 const baseUrl = window.location.origin;
 const getUserPostsUrl = baseUrl + "/api/admin/post";
 const deletePostUrl = baseUrl + "/api/admin/post/";
+const createPostUrl = baseUrl + "/api/admin/post";
+const updatePostUrl = baseUrl + "/api/admin/post/";
 const jwtToken = window.localStorage["Bearer Token"];
 
 $(document).ready(function() {
@@ -20,6 +22,48 @@ $(document).ready(function() {
         error: function (error) {
             console.log(error)
         }
+    });
+
+    $("#create-post-btn").on('click', function(e) {
+        $("#post-form").attr({
+            method: "POST",
+            action: createPostUrl,
+        });
+        setModalAttributes("ایجاد پست جدید", "", "")
+    });
+
+    $(".edit-post-container").on('click', function(e) {
+        $("#post-form").attr({
+            method: "PUT",
+            action: updatePostUrl + $(this).data('pid'),
+        });
+
+        $postContainer = $(this).closest(".post-container");
+        title = $postContainer.find(".post-title").text();
+        content = $postContainer.find(".post-content").text();
+        
+        setModalAttributes("ویرایش پست", title, content);
+    });
+
+    $("#post-form").on('submit', function(e) {
+        e.preventDefault();
+        $.ajax({
+            method: $(this).attr('method'),
+            url: $(this).attr('action'),
+            data: {
+                title: $("#postTitle").val(),
+                content: $("#postContent").val(),
+            },
+            headers: {
+                "Authorization": jwtToken,
+            },
+            success: function (response) {
+                window.location.reload();
+            },
+            error: function (error) {
+                $("#form-error-msg").removeClass('d-none').text(error.responseJSON.message);
+            }
+        });
     });
 })
 
@@ -43,6 +87,8 @@ function createPostElements(posts) {
         $post.find(".remove-post-container").attr("data-pid", post.id).on('click', function(e) {
             deletePostRequest($(this).data("pid"), $(this).closest(".post-container"));
         });
+
+        $post.find(".edit-post-container").attr("data-pid", post.id);
 
         postsElements.push($post)
     }
@@ -80,4 +126,10 @@ function deletePostRequest(id, $post) {
             console.log(error)
         }
     });
+}
+
+function setModalAttributes(modalTitle, title, content) {
+    $("#postTitle").val(title);
+    $("#postContent").val(content);
+    $("#modalTitle").html(modalTitle);
 }
