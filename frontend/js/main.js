@@ -19,8 +19,6 @@ showLoggedOutButtons = () => {
     $('#user-info').html('')
 }
 
-// getUserInfo
-
 jQuery(document).ready(function ($) {
     const $sidebar = $("#sidebar");
     const $menuToggleBtn = $("#toggle-menu-btn");
