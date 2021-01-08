@@ -1,5 +1,5 @@
 import express from "express"
-import { signup, signin, testAuth } from "../controllers/user.controller.js"
+import { signup, signin, read } from "../controllers/user.controller.js"
 import { generateMethodNotAllowed } from "../controllers/default.controller.js"
 import { authorize } from "../middlewares/auth.js"
 
@@ -13,8 +13,8 @@ router.route('/signin')
     .post(signin)
     .all(generateMethodNotAllowed('POST'))
 
-router.route('/test_auth')
-    .get(authorize, testAuth)
+router.route('/admin/user')
+    .get(authorize, read)
     .all(generateMethodNotAllowed('GET'))
 
 export default router

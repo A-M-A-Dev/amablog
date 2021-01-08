@@ -82,12 +82,21 @@ logout = () => {
     showLoggedOutButtons()
 }
 
-loginDone = (email, response) => {
+loginDone = response => {
     window.localStorage.token = response.token
-    window.localStorage.email = email
-    showLoginAlert('Login successful', 'success')
-    showLoggedInButtons()
-    closeModal()
+
+    $.ajax({
+        url:'/api/admin/user/',
+        method: 'GET',
+        headers: {
+            "Authorization": window.localStorage.token,
+        },
+    }).done(response => {
+        window.localStorage.email = response.email;
+        showLoginAlert('Login successful', 'success')
+        showLoggedInButtons()
+        closeModal()
+    })
 }
 
 login = () => {
@@ -121,7 +130,7 @@ login = () => {
             password: password
         })
     })
-        .done(response => loginDone(email, response))
+        .done(loginDone)
         .fail(response => {showLoginAlert(response.responseJSON.message)})
 }
 
