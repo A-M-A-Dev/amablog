@@ -1,3 +1,24 @@
+showLoggedInButtons = () => {
+    $('#login-btn').hide()
+    $('#register-btn').hide()
+    $('#logout-btn').show()
+    $('#admin-btn').show()
+    $('#user-info').html(`
+    <hr>
+    <h4><i class="fal fa-user"></i> خوش آمدید
+    ${window.localStorage.email}
+    </h4>
+    `)
+}
+
+showLoggedOutButtons = () => {
+    $('#login-btn').show()
+    $('#register-btn').show()
+    $('#logout-btn').hide()
+    $('#admin-btn').hide()
+    $('#user-info').html('')
+}
+
 jQuery(document).ready(function ($) {
     const $sidebar = $("#sidebar");
     const $menuToggleBtn = $("#toggle-menu-btn");
@@ -18,6 +39,12 @@ jQuery(document).ready(function ($) {
     }).on('menu:close', function () {
         $sidebar.removeClass('open-sidebar');
     });
+
+    if (window.localStorage.token === undefined) {
+        showLoggedOutButtons()
+    } else {
+        showLoggedInButtons()
+    }
 });
 
 // Modal
@@ -25,7 +52,7 @@ function openModal(state) {
     $(`#${state}-tab-btn`).click()
     document.getElementById('modal').classList.add('active-modal');
 }
-function closeModal(state) {
+function closeModal() {
     document.getElementById('modal').classList.remove('active-modal');
     $('#dismiss-alert').click()
 }
@@ -43,11 +70,31 @@ showLoginAlert = (message, style='danger') => {
     $('#login-alert').slideDown("fast");
 }
 
-loginDone = (email, response) => {
-    window.localStorage.setItem('Login Email', email);
-    window.localStorage.setItem('Bearer Token', response.token);
-    showLoginAlert('Login successful', 'success')
-    // TODO: redirect to dashboard
+openAdmin = () => {
+    window.location.href = '/admin/'
+}
+
+logout = () => {
+    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('email')
+    showLoggedOutButtons()
+}
+
+loginDone = response => {
+    window.localStorage.token = response.token
+
+    $.ajax({
+        url:'/api/admin/user/',
+        method: 'GET',
+        headers: {
+            "Authorization": window.localStorage.token,
+        },
+    }).done(response => {
+        window.localStorage.email = response.email;
+        showLoginAlert('Login successful', 'success')
+        showLoggedInButtons()
+        closeModal()
+    })
 }
 
 login = () => {
@@ -81,7 +128,7 @@ login = () => {
             password: password
         })
     })
-        .done(response => loginDone(email, response))
+        .done(loginDone)
         .fail(response => {showLoginAlert(response.responseJSON.message)})
 }
 

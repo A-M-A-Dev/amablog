@@ -66,9 +66,4 @@ export const signin = async (req, res) => {
     })
 }
 
-
-export const testAuth = (req, res) => {
-    res.status(200).json({
-        message: `the request is authenticated for user ${req.user.email}.`
-    })
-}
+export const read = (req, res) => res.json(req.user)

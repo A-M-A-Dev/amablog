@@ -3,14 +3,25 @@ const getUserPostsUrl = baseUrl + "/api/admin/post";
 const deletePostUrl = baseUrl + "/api/admin/post/";
 const createPostUrl = baseUrl + "/api/admin/post";
 const updatePostUrl = baseUrl + "/api/admin/post/";
-const jwtToken = window.localStorage["Bearer Token"];
+const user = {
+    token: window.localStorage.token,
+    email: window.localStorage.email,
+}
 
 $(document).ready(function() {
+
+    if (user.token === undefined) {
+        window.location.href = '/'
+        return;
+    }
+
+    $('#user-email-placeholder').html(user.email)
+
     $.ajax({
         url: getUserPostsUrl,
         method: 'GET',
         headers: {
-            "Authorization": jwtToken,
+            "Authorization": user.token,
         },
         success: function (response) {
             if (response.length)
@@ -55,7 +66,7 @@ $(document).ready(function() {
                 content: $("#postContent").val(),
             },
             headers: {
-                "Authorization": jwtToken,
+                "Authorization": user.token,
             },
             success: function (response) {
                 window.location.reload();
@@ -66,6 +77,12 @@ $(document).ready(function() {
         });
     });
 })
+
+logout = () => {
+    window.localStorage.removeItem('token')
+    window.localStorage.removeItem('email')
+    window.location.href = '/'
+}
 
 function createAndAppendPosts(posts) {
     $posts = createPostElements(posts);
@@ -115,7 +132,7 @@ function deletePostRequest(id, $post) {
         url: deletePostUrl + id,
         method: "DELETE",
         headers: {
-            "Authorization": jwtToken,
+            "Authorization": user.token,
         },
         success: function (response) {
             $post.fadeOut(300, function() {

@@ -46,8 +46,29 @@
                 <a class="nav-link" data-toggle="tab" href="#pills-data" role="tab" aria-controls="nav-data-tab" aria-selected="false"><i class="fal fa-table"></i> <span>داده ها</span></a>
             </li>
         </ul>
-        <button class="mr-auto p-2 btn btn-outline-custom login-btn ml-2" onclick="openModal('login')"><span>ورود</span> <i class="fal fa-sign-in"></i></button>
-        <button class="p-2 btn btn-outline-custom login-btn" onclick="openModal('register')"><span>ثبت نام</span> <i class="fal fa-user-plus"></i></button>
+        <button 
+            id="login-btn"
+            class="mr-auto p-2 btn btn-outline-custom login-btn ml-2"
+            onclick="openModal('login')"
+            style="display: none;"
+        ><span>ورود</span> <i class="fal fa-sign-in"></i></button>
+        <button
+            id="register-btn"
+            class="p-2 btn btn-outline-custom login-btn ml-2"
+            onclick="openModal('register')" style="display: none;"
+        ><span>ثبت نام</span> <i class="fal fa-user-plus"></i></button>
+        <button
+            id="logout-btn"
+            class="mr-auto p-2 btn btn-outline-custom login-btn ml-2"
+            onclick="logout()"
+            style="display: none;"
+        ><span>خروج</span> <i class="fal fa-sign-out"></i></button>
+        <button
+            id="admin-btn"
+            class="p-2 btn btn-outline-custom login-btn ml-2"
+            onclick="openAdmin()"
+            style="display: none;"
+        ><span>ناحیه کاربری</span> <i class="fal fa-user"></i></button>
     </div>
     <i class="fal fa-bars fa-2x toggle-menu-bars" id="toggle-menu-btn" data-status=""></i>
 </nav>
@@ -71,6 +92,7 @@
             <label class="toggle" for="switch-1"></label>
         </div>
     </div>
+    <div id="user-info" class="justify-content-center align-center"></div>
 </aside>
 <div id="main-container" class="tab-content">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
