@@ -277,3 +277,18 @@ body.night-mode #sidebar hr {
         font-size: 3.5em;
     }
 }
+/**************************  Posts *********************/
+#posts-container * {
+    direction: rtl;
+    text-align: right;
+}
+#posts-container .card-header i {
+    vertical-align: middle;
+    font-size: 18px;
+    margin-left: 5px;
+}
+
+#posts-container .post-created-at{
+    margin-left: 5px;
+    margin-top: 4px;
+}

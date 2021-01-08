@@ -19,7 +19,59 @@ showLoggedOutButtons = () => {
     $('#user-info').html('')
 }
 
+function createAndAppendPosts(posts) {
+    $posts = createPostElements(posts);
+    $("#posts-container").append($posts);
+}
+
+function createPostElements(posts) {
+    postsElements = [];
+
+    for (post of posts) {
+        $post = $(".clonable-post").clone(true);
+        $post.removeClass('d-none clonable-post');
+
+        $post.find(".post-title").text(post.title);
+        $post.find(".post-content").text(post.content);
+        $post.find(".post-author").text(post.user.email);
+        $post.find(".post-created-at").text(formatDate(post.createdAt));
+
+        postsElements.push($post)
+    }
+    
+    return postsElements;
+}
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
 jQuery(document).ready(function ($) {
+    $.ajax({
+        url: window.location.origin + '/api/post',
+        method: 'GET',
+        success: function (response) {
+            if (response.length)
+                createAndAppendPosts(response);
+            else
+                $("#no-post-alert").removeClass("d-none");
+            
+        },
+        error: function (error) {
+            console.log(error)
+        }
+    });
+
     const $sidebar = $("#sidebar");
     const $menuToggleBtn = $("#toggle-menu-btn");
 
