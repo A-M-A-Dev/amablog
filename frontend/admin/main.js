@@ -1,16 +1,31 @@
+function getLocalStorageWithExpiry(key) {
+    const itemStr = window.localStorage.getItem(key)
+    // if the item doesn't exist, return null
+    if (!itemStr) {
+        return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+    // compare the expiry time of the item with the current time
+    if (now.getTime() > item.expiry) {
+        // If the item is expired, delete the item from storage
+        // and return null
+        window.localStorage.removeItem(key)
+        return undefined
+    }
+    return item.value
+}
+
 const baseUrl = window.location.origin;
 const getUserPostsUrl = baseUrl + "/api/admin/post";
 const deletePostUrl = baseUrl + "/api/admin/post/";
 const createPostUrl = baseUrl + "/api/admin/post";
 const updatePostUrl = baseUrl + "/api/admin/post/";
-const user = {
-    token: window.localStorage.token,
-    email: window.localStorage.email,
-}
+const user = getLocalStorageWithExpiry('user')
 
 $(document).ready(function() {
 
-    if (user.token === undefined) {
+    if (user === undefined) {
         window.location.href = '/'
         return;
     }
@@ -79,8 +94,7 @@ $(document).ready(function() {
 })
 
 logout = () => {
-    window.localStorage.removeItem('token')
-    window.localStorage.removeItem('email')
+    window.localStorage.removeItem('user')
     window.location.href = '/'
 }
 

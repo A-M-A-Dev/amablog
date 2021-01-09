@@ -1,3 +1,33 @@
+function setLocalStorageWithExpiry(key, value, ttl) {
+    const now = new Date()
+    
+	// `item` is an object which contains the original value
+	// as well as the time when it's supposed to expire
+	const item = {
+		value: value,
+		expiry: now.getTime() + ttl,
+	}
+	window.localStorage.setItem(key, JSON.stringify(item))
+}
+
+function getLocalStorageWithExpiry(key) {
+    const itemStr = window.localStorage.getItem(key)
+    // if the item doesn't exist, return null
+    if (!itemStr) {
+        return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+    // compare the expiry time of the item with the current time
+    if (now.getTime() > item.expiry) {
+        // If the item is expired, delete the item from storage
+        // and return null
+        window.localStorage.removeItem(key)
+        return undefined
+    }
+    return item.value
+}
+
 showLoggedInButtons = () => {
     $('#login-btn').hide()
     $('#register-btn').hide()
@@ -6,7 +36,7 @@ showLoggedInButtons = () => {
     $('#user-info').html(`
     <hr>
     <h4><i class="fal fa-user"></i> خوش آمدید
-    ${window.localStorage.email}
+    ${getLocalStorageWithExpiry('user').email}
     </h4>
     `)
 }
@@ -92,7 +122,7 @@ jQuery(document).ready(function ($) {
         $sidebar.removeClass('open-sidebar');
     });
 
-    if (window.localStorage.token === undefined) {
+    if (getLocalStorageWithExpiry('user') === undefined) {
         showLoggedOutButtons()
     } else {
         showLoggedInButtons()
@@ -127,22 +157,24 @@ openAdmin = () => {
 }
 
 logout = () => {
-    window.localStorage.removeItem('token')
-    window.localStorage.removeItem('email')
+    window.localStorage.removeItem('user')
     showLoggedOutButtons()
 }
 
 loginDone = response => {
-    window.localStorage.token = response.token
+    const token = response.token
 
     $.ajax({
         url:'/api/admin/user/',
         method: 'GET',
         headers: {
-            "Authorization": window.localStorage.token,
+            "Authorization": token,
         },
     }).done(response => {
-        window.localStorage.email = response.email;
+        setLocalStorageWithExpiry('user', {
+            token: token,
+            email: response.email
+        }, 3600000)
         showLoginAlert('Login successful', 'success')
         showLoggedInButtons()
         closeModal()
