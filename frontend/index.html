@@ -38,14 +38,6 @@
         <img src="images/logo-blue.png" alt="Logo" id="night-logo">
     </div>
     <div id="sub-menu" class="d-flex align-items-center">
-        <ul class="p-2 nav nav-pills" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" data-toggle="tab" href="#pills-home" role="tab" aria-controls="nav-home-tab" aria-selected="true"><i class="fal fa-home"></i> <span>خانه</span></a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" data-toggle="tab" href="#pills-data" role="tab" aria-controls="nav-data-tab" aria-selected="false"><i class="fal fa-table"></i> <span>داده ها</span></a>
-            </li>
-        </ul>
         <button 
             id="login-btn"
             class="mr-auto p-2 btn btn-outline-custom login-btn ml-2"
@@ -59,7 +51,7 @@
         ><span>ثبت نام</span> <i class="fal fa-user-plus"></i></button>
         <button
             id="logout-btn"
-            class="mr-auto p-2 btn btn-outline-custom login-btn ml-2"
+            class="mr-auto p-2 btn btn-outline-danger login-btn ml-2"
             onclick="logout()"
             style="display: none;"
         ><span>خروج</span> <i class="fal fa-sign-out"></i></button>
@@ -119,148 +111,6 @@
                     <i class="fa fa-user-edit"></i>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="tab-pane fade table-div data-tab" id="pills-data" role="tabpanel" aria-labelledby="pills-data-tab">
-        <table class="table table-bordered table-striped table-hover data-tbl">
-            <tr>
-              <th>رتبه</th>
-              <th>نام تیم</th>
-              <th>نام دانشگاه و کشور</th>
-              <th>امتیاز</th>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>کوشا جان</td>
-                <td>دانشگاه صنعتی شریف، ایران</td>
-                <td>1305</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>مبارزین تنها</td>
-                <td>دانشگاه امیرکبیر، ایران</td>
-                <td>1270</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>حاجی درچه ای</td>
-                <td>دانشگاه علوم پزشکی اصفهان، ایران</td>
-                <td>1250</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>عدالت و آزادی</td>
-                <td>دانشگاه آزاد قزوین، ایران</td>
-                <td>1105</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Beatles</td>
-                <td>دانشگاه ملی شوچنکو، اوکراین</td>
-                <td>940</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>الگل</td>
-                <td>دانشگاه آزاد اسلامی واحد علوم تحقیقات، ایران</td>
-                <td>925</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>عمال مناجم البیانات</td>
-                <td>دانشگاه علم و صنعت اردن، اردن</td>
-                <td>870</td>
-            </tr>
-        </table>
-        <div class="allCards">
-            <div class="card bg-light mb-3 crd">
-                <div class="flex-cards-container"> 
-                    <div class="right-direction">رتبه</div> 
-                    <div class="right-direction"><b>نام تیم</b></div> 
-                    <div class="right-direction">نام دانشگاه و کشور</div>  
-                    <div class="right-direction"><b>امتیاز</b></div> 
-                    <div class="left-direction">1</div> 
-                    <div class="left-direction"><b>کوشا جان</b></div> 
-                    <div class="left-direction">دانشگاه صنعتی شریف، ایران</div>  
-                    <div class="left-direction"><b>1305</b></div>  
-                </div> 
-            </div>
-            <div class="card bg-light mb-3 crd">
-                <div class="flex-cards-container"> 
-                    <div class="right-direction">رتبه</div> 
-                    <div class="right-direction"><b>نام تیم</b></div> 
-                    <div class="right-direction">نام دانشگاه و کشور</div>  
-                    <div class="right-direction"><b>امتیاز</b></div> 
-                    <div class="left-direction">2</div> 
-                    <div class="left-direction"><b>مبارزین تنها</b></div> 
-                    <div class="left-direction">دانشگاه امیرکبیر، ایران</div>  
-                    <div class="left-direction"><b>1270</b></div>  
-                </div> 
-            </div>
-            <div class="card bg-light mb-3 crd">
-                <div class="flex-cards-container"> 
-                    <div class="right-direction">رتبه</div> 
-                    <div class="right-direction"><b>نام تیم</b></div> 
-                    <div class="right-direction">نام دانشگاه و کشور</div>  
-                    <div class="right-direction"><b>امتیاز</b></div> 
-                    <div class="left-direction">3</div> 
-                    <div class="left-direction"><b>حاجی درچه ای</b></div> 
-                    <div class="left-direction">دانشگاه علوم پزشکی اصفهان، ایران</div>  
-                    <div class="left-direction"><b>1250</b></div> 
-                </div> 
-            </div>
-            <div class="card bg-light mb-3 crd">
-                <div class="flex-cards-container"> 
-                    <div class="right-direction">رتبه</div> 
-                    <div class="right-direction"><b>نام تیم</b></div> 
-                    <div class="right-direction">نام دانشگاه و کشور</div>  
-                    <div class="right-direction"><b>امتیاز</b></div> 
-                    <div class="left-direction">4</div> 
-                    <div class="left-direction"><b>عدالت و آزادی</b></div> 
-                    <div class="left-direction">دانشگاه آزاد قزوین، ایران</div>  
-                    <div class="left-direction"><b>1105</b></div> 
-                </div> 
-            </div>
-            <div class="card bg-light mb-3 crd">
-                <div class="flex-cards-container"> 
-                    <div class="right-direction">رتبه</div> 
-                    <div class="right-direction"><b>نام تیم</b></div> 
-                    <div class="right-direction">نام دانشگاه و کشور</div>  
-                    <div class="right-direction"><b>امتیاز</b></div> 
-                    <div class="left-direction">5</div> 
-                    <div class="left-direction"><b>Beatles</b></div> 
-                    <div class="left-direction">دانشگاه ملی شوچنکو، اوکراین</div>  
-                    <div class="left-direction"><b>940</b></div> 
-                </div> 
-            </div>
-            <div class="card bg-light mb-3 crd">
-                <div class="flex-cards-container"> 
-                    <div class="right-direction">رتبه</div> 
-                    <div class="right-direction"><b>نام تیم</b></div> 
-                    <div class="right-direction">نام دانشگاه و کشور</div>  
-                    <div class="right-direction"><b>امتیاز</b></div> 
-                    <div class="left-direction">6</div> 
-                    <div class="left-direction"><b>الگل</b></div> 
-                    <div class="left-direction">دانشگاه آزاد اسلامی واحد علوم تحقیقات، ایران</div>  
-                    <div class="left-direction"><b>925</b></div> 
-                </div> 
-            </div>
-            <div class="card bg-light mb-3 crd">
-                <div class="flex-cards-container"> 
-                    <div class="right-direction">رتبه</div> 
-                    <div class="right-direction"><b>نام تیم</b></div> 
-                    <div class="right-direction">نام دانشگاه و کشور</div>  
-                    <div class="right-direction"><b>امتیاز</b></div> 
-                    <div class="left-direction">7</div> 
-                    <div class="left-direction"><b>عمال مناجم البیانات</b></div> 
-                    <div class="left-direction">دانشگاه علم و صنعت اردن، اردن</div>  
-                    <div class="left-direction"><b>870</b></div> 
-                </div> 
-            </div>
-        </div>
-        <div id="data-buttons-container">
-            <div class="bd-highlight prev-flex">قبلی</div>
-            <div class="bd-highlight next-flex">بعدی</div>
         </div>
     </div>
 </div>
